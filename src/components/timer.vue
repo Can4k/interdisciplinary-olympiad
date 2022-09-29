@@ -15,7 +15,7 @@
 export default {
   name: "timer",
   async mounted () {
-    let res = await fetch('https://eater57.projectoria.ru/date');
+    let res = await fetch('https://back.is57.ru/date');
     res = await res.text();
     let time_start = new Date(res);
     let time_now = new Date();

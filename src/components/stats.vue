@@ -37,7 +37,7 @@ export default {
     }
   },
   async mounted() {
-    let res = await fetch('https://eater57.projectoria.ru/results');
+    let res = await fetch('https://back.is57.ru/results');
     this.result = await res.json();
   },
   methods: {
