@@ -4,9 +4,12 @@
       <p @click="open" v-show="show_stat" id="stat">ПОДРОБНАЯ СТАТИСТИКА</p>
     </transition>
     <div @click="pos" class="pos">
-      <p>{{ name }}</p>
+      <p><strong>{{ name.substring(0, 2) }}</strong>{{ name.substring(2, name.length) }}</p>
       <p id="balance">{{ balance }}</p>
       <div class="up"></div>
+<!--  <img class="medal" v-if="object.num === 1" src="./leaderboard-top1.svg" alt="топ-1">
+      <img class="medal" v-if="object.num === 2" src="./leaderboard-top2.svg" alt="топ-1">
+      <img class="medal" v-if="object.num === 3" src="./leaderboard-top3.svg" alt="топ-1">-->
       <div class="cont" :style="get()"></div>
     </div>
   </div>
@@ -20,7 +23,8 @@ export default {
     name: String,
     balance: Number,
     show_stat: Boolean,
-    max_height: Number
+    max_height: Number,
+    object: Object
   },
   methods: {
     get() {
@@ -48,7 +52,7 @@ export default {
 .cont {
   width: 50px;
   background-clip: padding-box;
-  background-image: url("@/assets/colorado (1).png");
+  background-image: url("@/assets/piece_of_pipe_mid .png");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,7 +64,7 @@ export default {
   width: 50px;
   height: 24px;
   background-clip: padding-box;
-  background-image: url("@/assets/colorado.png");
+  background-image: url("@/assets/piece_of_pipe .png");
 }
 
 .colorado {
@@ -80,11 +84,18 @@ p {
   line-height: 13px;
   word-wrap: break-word;
   text-shadow: 0 0 5px white;
+  font-size: 8px;
+}
+
+strong {
+  font-size: 10px;
 }
 
 #balance {
-  color: white;
+  color: #ffffff;
   text-shadow: black 0 0 3px;
+  font-size: 15px;
+  font-weight: 1000;
 }
 
 #stat {
@@ -116,5 +127,12 @@ p {
 .animation-enter-from,
 .animation-leave-to {
   opacity: 0;
+}
+
+.medal {
+  width: 56px;
+  margin-bottom: -61px;
+  z-index: 5;
+  opacity: 1;
 }
 </style>

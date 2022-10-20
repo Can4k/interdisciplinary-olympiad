@@ -25,8 +25,15 @@
         <strong v-show="showField && !this.teamsList.length">Команд пока нет. Попробуйте перезагрузить страницу.</strong>
         <transition name="animation">
           <div :style="styleColumns" class="columns" v-show="showField">
-            <colorado :max_height="maxHeight" :show_stat="show_button && i === last" @opendialog="opendialog(i)" @chagepos="move(i)" v-for="i in this.teamsList"
-                      :name="i.name" :balance="balanceList[i.id] || 0"></colorado>
+            <pipe
+                :max_height="maxHeight"
+                :show_stat="show_button && i === last"
+                @opendialog="opendialog(i)"
+                @chagepos="move(i)"
+                v-for="i in this.teamsList"
+                :name="i.name" :balance="balanceList[i.id] || 0"
+                :object="i">
+            </pipe>
           </div>
         </transition>
       </div>
@@ -35,12 +42,12 @@
 </template>
 
 <script>
-import Colorado from "@/components/colorado";
-import Stats from "@/components/stats";
+import Pipe from "@/components/pipe_component/pipe";
+import Stats from "@/components/statistics-window";
 
 export default {
   name: "teams",
-  components: {Stats, Colorado},
+  components: {Stats, Pipe},
   methods: {
     async getList(val) {
       let res = await fetch(`https://back.is57.ru/${val}`);

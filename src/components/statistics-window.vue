@@ -3,12 +3,7 @@
     <h3>{{ team?.name}}</h3>
     <div class="stat">
       <div class="info-block" v-for="i in this.result[this.team?.id]?.results" v-show="i.result">
-        <div>
-          <strong style="text-transform: uppercase; font-size: 10px">
-            {{i.taskInfo.subject}}
-          </strong>
-        </div>
-        <strong>
+        <strong style="font-size: 10px">
           {{ i.taskInfo.name }}
         </strong>
         <div>

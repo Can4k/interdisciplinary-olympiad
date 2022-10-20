@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import timer from "@/components/timer";
-import teams from "@/components/teams";
-import choseteam from "@/components/choseteam";
+import timer from "@/pages/timer";
+import teams from "@/pages/statistics-page";
+import chose_team from "@/pages/menu";
 
 const routes = [
   {
     path: '/menu',
     name: 'menu',
-    component: choseteam
+    component: chose_team
   },
   {
     path: '/',
@@ -16,7 +16,7 @@ const routes = [
   },
   {
     path: '/menu/:id',
-    name: 'build',
+    name: 'teams',
     component: teams
   }
 ]

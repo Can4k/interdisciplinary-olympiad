@@ -2,7 +2,7 @@
   <transition name="fade">
     <div id="center" v-show="showble">
       <h2 id="timer-logo">
-        Межпредметная Олимпиада
+        До начала осталось
       </h2>
       <h2 id="timer">
         {{ getTimeString(counter) }}
@@ -12,8 +12,10 @@
 </template>
 
 <script>
+import Ad from "@/components/ad_component/ad";
 export default {
   name: "timer",
+  components: {Ad},
   async mounted () {
     let res = await fetch('https://back.is57.ru/date');
     res = await res.text();

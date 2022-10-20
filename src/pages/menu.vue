@@ -1,4 +1,5 @@
 <template>
+  <ad></ad>
   <transition name="fade">
     <div v-show="is">
       <h2 id="timer-logo-2">
@@ -22,8 +23,10 @@
 </template>
 
 <script>
+import Ad from "@/components/ad_component/ad";
 export default {
   name: "choseteam",
+  components: {Ad},
   async mounted() {
     this.is = false;
     let res = await fetch('https://back.is57.ru/date');
