@@ -5,7 +5,6 @@
 
 <script>
 const accepted_hrefs = [
-    '/',
     '/menu',
     '/menu/1',
     '/menu/3',
@@ -15,7 +14,7 @@ export default {
   name: "App",
   mounted() {
     if (accepted_hrefs.indexOf(location.pathname) === -1) {
-      location.replace('/');
+      location.replace('/menu');
     }
   }
 }

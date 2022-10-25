@@ -1,5 +1,5 @@
 <template>
-  <div v-if="true && showble" class="add-container" :style="`background-color: ${colors[type]}`">
+  <div v-if ="true && showble" class="add-container" :style="`background-color: ${colors[type]}`">
     <img @click="closead" alt="закрыть" src="./close.png" class="close">
     <div class="flex">
       <img alt="картинка" :src="getImgUrl(image_hrefs[type])" class="add-image">
@@ -12,7 +12,7 @@
 export default {
   name: "ad",
   props: {
-    type_props: Number
+    num: Number,
   },
   data() {
     return {
@@ -36,7 +36,8 @@ export default {
         'Как ПОМОЛОДЕТЬ? Источник молодизны МОЛОДЫХ ЛЮДЕЙ раскрыт нашим экспертом!!!',
         'Прирученные ПИТОНЫ, ломающие СЕРВЕРА конкурентов. Заинтересовали? Обращайтесь к нашему оператору!!!',
         'НОВИНКИ НА is57.ru - отвечает наш программист!!!',
-        'МУЖЧИНА, который ГОТОВ серьезно озадачиться…'
+        'МУЖЧИНА, который ГОТОВ серьезно озадачиться…',
+        'Моей МАМЕ удалось нарушить 57 ФЕДЕРАЛЬНЫХ ЗАКОНОВ и отделаться штрафом, просто ОНА позвонила ЕМУ…'
       ],
       link_hrefs: [
         'https://t.me/startseva_yu',
@@ -56,7 +57,8 @@ export default {
         'https://vk.com/p.zakharov',
         'https://t.me/vvp81',
         'https://t.me/Can4k',
-        'https://t.me/CHUBBY_D'
+        'https://t.me/CHUBBY_D',
+        'https://t.me/akprf'
       ],
       image_hrefs: [
         'cat.png',
@@ -76,7 +78,8 @@ export default {
         'i_love_albebra.jpg',
         'python.jpg',
         'guru.png',
-        'ilia_searching_girlfriend.png'
+        'ilia_searching_girlfriend.png',
+        'borya.jpg'
       ],
       colors: [
         '#ff6100',
@@ -97,6 +100,7 @@ export default {
         'wheat',
         'yellow',
         'white',
+        'lightblue'
       ]
     }
   },
@@ -109,8 +113,8 @@ export default {
     }
   },
   mounted() {
-    let rand = () => {return this.titles.length - 1}; /*require('@stdlib/random-base-mt19937');*/
-    this.type = rand() % this.titles.length;
+    let random = /*() => {return this.titles.length - 1}; */require('@stdlib/random-base-mt19937');
+    this.type = (random() + this.num) % this.titles.length;
   }
 }
 </script>
@@ -123,11 +127,6 @@ export default {
 
 .add-container {
   padding: 0 10px 10px 10px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin: 5px;
   z-index: 100;
   box-shadow: 0 0 40px;
   border: 5px solid red;

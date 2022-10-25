@@ -1,5 +1,4 @@
 <template>
-  <ad></ad>
   <transition name="fade">
     <div v-show="is">
       <h2 id="timer-logo-2">
@@ -10,7 +9,7 @@
       </div>
       <div class="cont">
         <div @click="redirect(i)" v-for="i in 3" v-show="i !== 2" class="item">
-          {{i}}
+          {{ i }}
         </div>
       </div>
       <div class="cont">
@@ -24,20 +23,12 @@
 
 <script>
 import Ad from "@/components/ad_component/ad";
+
 export default {
   name: "choseteam",
   components: {Ad},
   async mounted() {
-    this.is = false;
-    let res = await fetch('https://back.is57.ru/date');
-    res = await res.text();
-    let time_start = new Date(res);
-    let time_now = new Date();
-    if (time_now < time_start) {
-      location.replace('/');
-    } else {
-      this.is = true;
-    }
+    this.is = true;
   },
   methods: {
     redirect(v) {
@@ -56,6 +47,7 @@ export default {
 h2 {
   padding: 5px;
 }
+
 .cont {
   display: flex;
   align-items: center;
@@ -83,6 +75,7 @@ strong {
   padding-top: 4px;
   padding-left: 4px;
 }
+
 .item-2 {
   margin: 20px;
   background-color: white;
@@ -100,6 +93,7 @@ strong {
   padding-top: 4px;
   padding-left: 4px;
 }
+
 #timer-logo-2 {
   font-size: 60px;
   text-shadow: 0 1px #e52521, 1px 2px #e52521, 2px 3px #e52521, 3px 4px #e52521, 4px 5px #e52521, 8px 9px rgb(0 0 0 / 10%);
@@ -111,29 +105,35 @@ strong {
   word-wrap: break-word;
   line-height: 70px;
 }
+
 .item:active {
   scale: 0.95;
 }
+
 .chose {
   opacity: 0.3;
   font-family: 'Press Start 2P', cursive;
   text-align: center;
   color: white;
 }
-@media screen and (max-width: 800px){
+
+@media screen and (max-width: 800px) {
   #timer-logo-2 {
     font-size: 27px;
     margin-top: 50px;
     margin-bottom: 50px;
   }
+
   .cont {
     flex-wrap: wrap;
   }
+
   .item {
     font-size: 30px;
     height: 80px;
     width: 80px;
   }
+
   .item-2 {
     font-size: 20px;
     width: 300px;
@@ -141,23 +141,27 @@ strong {
   }
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 500px) {
   #timer-logo-2 {
     font-size: 20px;
   }
+
   .item {
     width: 50px;
     height: 50px;
   }
+
   strong {
     font-size: 15px;
   }
+
   .item-2 {
     font-size: 12px;
     width: 200px;
     height: 50px;
   }
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity .5s ease;
@@ -166,5 +170,20 @@ strong {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+footer {
+  z-index: 100;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  flex-direction: revert;
 }
 </style>

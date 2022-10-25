@@ -7,9 +7,6 @@
       <p><strong>{{ name.substring(0, 2) }}</strong>{{ name.substring(2, name.length) }}</p>
       <p id="balance">{{ balance }}</p>
       <div class="up"></div>
-<!--  <img class="medal" v-if="object.num === 1" src="./leaderboard-top1.svg" alt="топ-1">
-      <img class="medal" v-if="object.num === 2" src="./leaderboard-top2.svg" alt="топ-1">
-      <img class="medal" v-if="object.num === 3" src="./leaderboard-top3.svg" alt="топ-1">-->
       <div class="cont" :style="get()"></div>
     </div>
   </div>

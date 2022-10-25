@@ -49,11 +49,6 @@ export default {
   name: "teams",
   components: {Stats, Pipe},
   methods: {
-    async getList(val) {
-      let res = await fetch(`https://back.is57.ru/${val}`);
-      res = await res.json();
-      return res;
-    },
     opendialog(i) {
       if (this.is) {
         return;
@@ -184,20 +179,10 @@ export default {
       }
     })
 
-    this.show = false;
-    let res = await fetch('https://back.is57.ru/date');
-    res = await res.text();
-    let time_start = new Date(res);
-    let time_now = new Date();
-    this.counter = Math.max(0, Math.floor((time_start - time_now) / 1000));
-    if (time_now < time_start) {
-      location.replace('/');
-    } else {
-      this.show = true;
-    }
+    this.show = true;
 
-    this.teamsList = await this.getList('teams');
-    this.resultList = await this.getList('results');
+    this.teamsList = require('../offline_data/teams.json')
+    this.resultList = require('../offline_data/res.json')
     let balanceListTmp = {};
     for (let i of this.teamsList) {
       for (let j of this.resultList[i.id].results) {

@@ -32,8 +32,7 @@ export default {
     }
   },
   async mounted() {
-    let res = await fetch('https://back.is57.ru/results');
-    this.result = await res.json();
+    this.result = require('../offline_data/res.json');
   },
   methods: {
     close() {
